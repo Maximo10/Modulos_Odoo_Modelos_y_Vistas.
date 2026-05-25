@@ -1,9 +1,5 @@
 # Práctica 4: Módulos Odoo - Modelo y Vista
-
-**Autor:** Birhan Fdez | **Fecha:**11/4/2026
-
 ---
-
 ## Objetivo
 Aplicar conocimientos sobre modelos, relaciones y vistas en Odoo mediante 4 actividades.
 
