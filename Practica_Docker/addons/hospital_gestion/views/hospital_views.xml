@@ -1,0 +1,113 @@
+<odoo>
+    <!-- Vista Pacientes-->
+    <record id="view_paciente_list" model="ir.ui.view">
+        <field name="name">hospital.paciente.list</field>
+        <field name="model">hospital.paciente</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="nombre"/>
+                <field name="apellidos"/>
+                <field name="sintomas"/>
+            </list>
+        </field>        
+    </record>
+    
+    <record id="view_paciente_form" model="ir.ui.view">
+        <field name="name">hospital.paciente.form</field>
+        <field name="model">hospital.paciente</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="nombre"/>
+                    <field name="apellidos"/>
+                </group>
+                <group>
+                    <field name="sintomas"/>
+                </group>
+            </form>
+        </field>
+    </record>    
+    
+    <!-- Vista Médicos-->
+    <record id="view_medico_list" model="ir.ui.view">
+        <field name="name">hospital.medico.list</field>
+        <field name="model">hospital.medico</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="nombre"/>
+                <field name="apellidos"/>
+                <field name="numero_colegiado"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_medico_form" model="ir.ui.view">
+        <field name="name">hospital.medico.form</field>
+        <field name="model">hospital.medico</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="nombre"/>
+                    <field name="apellidos"/>
+                    <field name="numero_colegiado"/>
+                </group>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Vista Consultas-->
+    <record id="view_consulta_list" model="ir.ui.view">
+        <field name="name">hospital.consulta.list</field>
+        <field name="model">hospital.consulta</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="fecha_consulta"/>
+                <field name="paciente_id"/>
+                <field name="medico_id"/>
+                <field name="diagnostico"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_consulta_form" model="ir.ui.view">
+        <field name="name">hospital.consulta.form</field>
+        <field name="model">hospital.consulta</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="fecha_consulta"/>
+                    <field name="paciente_id"/>
+                    <field name="medico_id"/>
+                </group>
+                <group>
+                    <field name="diagnostico"/>
+                </group>
+            </form>
+        </field>
+    </record>
+        
+    <!-- Acciones del modulo-->
+    <record id="action_pacientes" model="ir.actions.act_window">
+        <field name="name">Pacientes</field>
+        <field name="res_model">hospital.paciente</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_medicos" model="ir.actions.act_window">
+        <field name="name">Médicos</field>
+        <field name="res_model">hospital.medico</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_consultas" model="ir.actions.act_window">
+        <field name="name">Consultas</field>
+        <field name="res_model">hospital.consulta</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menus-->
+    <menuitem id="menu_hospital_root" name="Hospital"/>
+    <menuitem id="menu_hospital_pacientes" name="Pacientes" parent="menu_hospital_root" action="action_pacientes"/>
+    <menuitem id="menu_hospital_medicos" name="Médicos" parent="menu_hospital_root" action="action_medicos"/>
+    <menuitem id="menu_hospital_consultas" name="Consultas" parent="menu_hospital_root" action="action_consultas"/>        
+</odoo>

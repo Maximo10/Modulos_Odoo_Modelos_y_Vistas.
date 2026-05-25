@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================= 
+        ACCIONES Y MENÚS COMICS 
+        ========================= -->
+    <record id='biblioteca_comic_action' model='ir.actions.act_window'>
+        <field name="name">Biblioteca de Comics</field>
+        <field name="res_model">biblioteca.comic</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Mi biblioteca (Simple)" id="biblioteca_base_menu"/>
+    <menuitem name="Comics" id="biblioteca_comic_menu" parent="biblioteca_base_menu" action="biblioteca_comic_action"/>
+
+    <!-- ========================= 
+        VISTAS COMICS 
+        ========================= -->
+    <record id="biblioteca_comic_view_form" model="ir.ui.view">
+        <field name="name">Formulario Comic</field>
+        <field name="model">biblioteca.comic</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="object" name="archivar" string="Archivar Comics"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="autor_ids" widget="many2many_tags"/>
+                        <field name="estado"/>
+                        <field name="paginas"/>
+                        <field name="activo" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="precio"/>
+                        <field name="fecha_publicacion"/>
+                        <field name="portada" widget="image" class="oe_avatar"/>
+                        <field name="valoracion_lector"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="descripcion"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="biblioteca_comic_view_list" model="ir.ui.view">
+        <field name="name">Lista Comics</field>
+        <field name="model">biblioteca.comic</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="nombre"/>
+                <field name="fecha_publicacion"/>
+                <field name="estado"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ========================= 
+     ACCIONES Y MENÚS SOCIOS 
+     ========================= -->
+    <record id="action_socio" model="ir.actions.act_window">
+        <field name="name">Socios</field>
+        <field name="res_model">biblioteca.socio</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_socio" name="Socios" parent="biblioteca_base_menu" action="action_socio"/>
+
+    <!-- ========================= -->
+    <!-- VISTAS SOCIOS -->
+    <!-- ========================= -->
+    <record id="view_socio_list" model="ir.ui.view">
+        <field name="name">Lista Socios</field>
+        <field name="model">biblioteca.socio</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="identificador"/>
+                <field name="nombre"/>
+                <field name="apellido"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_socio_form" model="ir.ui.view">
+        <field name="name">Formulario Socio</field>
+        <field name="model">biblioteca.socio</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="identificador"/>
+                    <field name="nombre"/>
+                    <field name="apellido"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- ACCIONES Y MENÚS EJEMPLARES -->
+    <!-- ========================= -->
+    <record id="action_ejemplar" model="ir.actions.act_window">
+        <field name="name">Ejemplares</field>
+        <field name="res_model">biblioteca.ejemplar</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_ejemplar" name="Ejemplares" parent="biblioteca_base_menu" action="action_ejemplar"/>
+
+    <!-- ========================= 
+        VISTAS EJEMPLARES 
+        ========================= -->
+    <record id="view_ejemplar_list" model="ir.ui.view">
+        <field name="name">Lista Ejemplares</field>
+        <field name="model">biblioteca.ejemplar</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="comic_id"/>
+                <field name="prestado_a"/>
+                <field name="fecha_prestamo"/>
+                <field name="fecha_devolucion"/>
+                <field name="estado"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ejemplar_form" model="ir.ui.view">
+        <field name="name">Formulario Ejemplar</field>
+        <field name="model">biblioteca.ejemplar</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="comic_id"/>
+                    <field name="prestado_a"/>
+                    <field name="fecha_prestamo"/>
+                    <field name="fecha_devolucion"/>
+                    <field name="estado" readonly="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

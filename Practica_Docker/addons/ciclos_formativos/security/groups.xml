@@ -1,0 +1,13 @@
+<odoo>
+    <!-- Grupo Director -->
+    <record id="group_director" model="res.groups">
+        <field name="name">Director</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <!-- Grupo Profesor -->
+    <record id="group_profesor" model="res.groups">
+        <field name="name">Profesor</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+</odoo>
